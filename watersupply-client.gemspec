@@ -6,11 +6,11 @@ require 'watersupply-client/version'
 Gem::Specification.new do |gem|
   gem.name          = "watersupply-client"
   gem.version       = Watersupply::Client::VERSION
-  gem.authors       = ["Corey Woodcox"]
-  gem.email         = ["corey.woodcox@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.authors       = ["Mike Utley", "Corey Woodcox"]
+  gem.email         = ["mikey.utley@gmail.com", "corey.woodcox@gmail.com"]
+  gem.description   = %q{This is the client for the watersupply service that runs on the raspberry pi}
+  gem.summary       = %q{}
+  gem.homepage      = "http://watersupp.ly/"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
