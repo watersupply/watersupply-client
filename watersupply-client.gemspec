@@ -6,6 +6,7 @@ require 'watersupply-client/version'
 Gem::Specification.new do |gem|
   gem.name          = "watersupply-client"
   gem.version       = Watersupply::Client::VERSION
+
   gem.authors       = ["Mike Utley", "Corey Woodcox"]
   gem.email         = ["mikey.utley@gmail.com", "corey.woodcox@gmail.com"]
   gem.description   = %q{This is the client for the watersupply service that runs on the raspberry pi}
@@ -17,6 +18,5 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_dependency "eventmachine", "~>1.0.0"
-  gem.add_dependency "em-http-request", "~>1.0.3"
+  gem.add_dependency "em-eventsource"
 end
