@@ -19,4 +19,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_dependency "em-eventsource"
+  gem.add_dependency "rufus-scheduler"
+  gem.add_dependency "gpio"
+
 end
