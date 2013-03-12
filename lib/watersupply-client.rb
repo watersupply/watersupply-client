@@ -4,12 +4,12 @@ Bundler.setup
 require 'em-eventsource'
 
 require 'watersupply-client/version'
-require 'watersupply-client/client'
 require 'rufus/scheduler'
 require 'gpio'
 require 'json'
 
 module Watersupply
+
   def self.start!
 
     client.on "create" do
@@ -55,5 +55,4 @@ module Watersupply
     end
 
   end
-
 end
