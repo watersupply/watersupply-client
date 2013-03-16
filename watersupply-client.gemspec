@@ -22,4 +22,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency "rufus-scheduler"
   gem.add_dependency "gpio"
 
+  gem.add_development_dependency "rspec"
+
 end
