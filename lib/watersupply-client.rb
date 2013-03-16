@@ -1,22 +1,33 @@
 require 'bundler/setup'
 Bundler.setup
-
+require 'core_ext/module/aliasing'
 require 'em-eventsource'
-
-require 'watersupply-client/version'
 require 'rufus/scheduler'
 require 'gpio'
 require 'json'
+require 'watersupply-client/version'
+require 'watersupply-client/tasks'
 
 module Watersupply
 
   def self.start!
+    # first thing after connecting to the server post supported tasks for this device to the server.
 
-    client.on "create" do
+    client.on "create" do |message|
+      
+      Task.new
+      
+    end
+
+    client.on "read" do
 
     end
 
-    client.on "reset" do
+    client.on "update" do
+
+    end
+
+    client.on "delete" do
 
     end
 
