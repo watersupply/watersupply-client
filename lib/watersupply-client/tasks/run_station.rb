@@ -9,16 +9,18 @@ module Watersupply
 
       end
 
-      def run
-        
+      def run!
+        turn_on
+        sleep @duration
+        turn_off
       end
 
-      def turn_on()
-        puts "turn on station #{}"
+      def turn_on
+        puts "turn on station #{@station}"
       end
 
-      def turn_off()
-        puts "turn off station #{}"
+      def turn_off
+        puts "turn off station #{@station}"
       end
 
     end

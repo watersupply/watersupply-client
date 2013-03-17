@@ -7,7 +7,7 @@ module Watersupply
 
       end
 
-      def run
+      def run!
         raise NotImplementedError, "#{self.class} does not implement run"
       end
 
