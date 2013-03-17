@@ -16,7 +16,7 @@ module Watersupply
     # post device id to POST watersupp.ly/devices/CLIENT_ID params capabilities
     # post tasks for this device to the server.
     EM.run do
-      http = EventMachine::HttpRequest.new("http://localhost:3000").post head: {"Content-Type" => "application/json"}, path: "/devices", body: {device: {identifier: IDENTIFIER, capabilities: CAPABILITIES}}.to_json
+      http = EventMachine::HttpRequest.new("http://localhost:3000").post head: {"Content-Type" => "application/json"}, path: "/devices.json", body: {device: {identifier: IDENTIFIER, capabilities: CAPABILITIES}}.to_json
       http.callback {
         p CAPABILITIES
         p http.response_header.status
