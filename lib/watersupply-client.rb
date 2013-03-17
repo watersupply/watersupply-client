@@ -9,13 +9,24 @@ require 'watersupply-client/version'
 require 'watersupply-client/tasks'
 
 module Watersupply
+  IDENTIFIER = 1
+  CAPABILITIES = Watersupply::Tasks.constants.select {|c| Watersupply::Tasks.const_get(c).is_a? Class}
 
   def self.start!
-    # first thing after connecting to the server post supported tasks for this device to the server.
+    # post device id to POST watersupp.ly/devices/CLIENT_ID params capabilities
+    # post tasks for this device to the server.
+    EM.run do
+      http = EventMachine::HttpRequest.new("http://localhost:3000").post head: {"Content-Type" => "application/json"}, path: "/devices", body: {device: {identifier: IDENTIFIER, capabilities: CAPABILITIES}}.to_json
+      http.callback {
+        p CAPABILITIES
+        p http.response_header.status
+        EM.stop
+      }
+
+      
+    end
 
     client.on "create" do |message|
-      
-      Task.new
       
     end
 
@@ -31,25 +42,25 @@ module Watersupply
 
     end
 
-    @tasks = [{
-      task_id: 1,
-      start_time: (Time.now + 5).to_json,
-      duration: "10",
-      message: "turn on station 1"
-    },{ 
-      task_id: 22,
-      start_time: (Time.now + 10).to_json,
-      duration: "15",
-      message: "turn on station 2"
-    }]
+    # @tasks = [{
+    #   task_id: 1,
+    #   start_time: (Time.now + 5).to_json,
+    #   duration: "10",
+    #   message: "turn on station 1"
+    # },{ 
+    #   task_id: 22,
+    #   start_time: (Time.now + 10).to_json,
+    #   duration: "15",
+    #   message: "turn on station 2"
+    # }]
 
-    @tasks.each do |task|
-      scheduler.at task[:start_time] do |job|
-        puts task[:message]
-        sleep task[:duration].to_i
-        puts "turn off station"
-      end
-    end
+    # @tasks.each do |task|
+    #   scheduler.at task[:start_time] do |job|
+    #     puts task[:message]
+    #     sleep task[:duration].to_i
+    #     puts "turn off station"
+    #   end
+    # end
 
   end
 
